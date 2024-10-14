@@ -1447,5 +1447,14 @@ function xmldb_main_upgrade($oldversion) {
     // Automatically generated Moodle v4.5.0 release upgrade line.
     // Put any upgrade step following this.
 
+    if ($oldversion < 2024101400.00) {
+        // Delete settings that were removed from code.
+        $settings = ['backup_general_questionbank', 'backup_import_questionbank', 'backup_auto_questionbank'];
+        array_walk($settings, static fn($setting) => unset_config($setting, 'backup'));
+
+        // Main savepoint reached.
+        upgrade_main_savepoint(true, 2024101400.00);
+    }
+
     return true;
 }
