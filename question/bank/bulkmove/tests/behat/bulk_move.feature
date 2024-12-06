@@ -9,6 +9,12 @@ Feature: Use the qbank plugin manager page for bulkmove
     And the following "courses" exist:
       | fullname | shortname | category |
       | Course 1 | C1        | 0        |
+      | Course 2 | C2        | 0        |
+      | Course 3 | C3        | 0        |
+    And the following "course enrolments" exist:
+      | user     | course | role           |
+      | teacher1 | C1     | editingteacher |
+      | teacher1 | C2     | editingteacher |
     And the following "course enrolments" exist:
       | user     | course | role           |
       | teacher1 | C1     | editingteacher |
@@ -19,9 +25,15 @@ Feature: Use the qbank plugin manager page for bulkmove
       | qbank       | Question bank 2 | C2     | qbank2    |
       | qbank       | Question bank 3 | C3     | qbank3    |
     And the following "question categories" exist:
-      | contextlevel | reference | name            |
-      | Course       | C1        | Test questions  |
-      | Course       | C1        | Moved questions |
+      | contextlevel    | reference  | name              |
+      | Activity module | quiz1      | Test questions 1  |
+      | Activity module | qbank1     | Test questions 2  |
+      | Activity module | qbank2     | Test questions 3  |
+      | Activity module | qbank3     | Test questions 4  |
+      | Activity module | qbank1     | Test questions 5  |
+      | Activity module | quiz1      | Test questions 6  |
+      | Course          | C1         | Test questions    |
+      | Course          | C1         | Moved questions   |
     And the following "questions" exist:
       | questioncategory   | qtype     | name            | questiontext               |
       | Test questions 1   | truefalse | First question  | Answer the first question  |
@@ -94,7 +106,6 @@ Feature: Use the qbank plugin manager page for bulkmove
       | Test questions   | truefalse   | Question 1 | Answer the first question |
       | Test questions   | missingtype | Question 2 | Write something           |
       | Test questions   | essay       | Question 3 | frog                      |
-    # Navigate to question bank.
     And I am on the "Course 1" "core_question > course question bank" page logged in as teacher1
     # Select questions to be moved.
     And I click on "Question 1" "checkbox"
@@ -102,8 +113,10 @@ Feature: Use the qbank plugin manager page for bulkmove
     And I click on "With selected" "button"
     When I press "Move to"
     # Select a different category to move the questions into.
-    And I select "Moved questions" from the "category" singleselect
-    And I press "Move to"
+    And I open the autocomplete suggestions list in the ".search-categories" "css_element"
+    And I click on "Moved questions" item in the autocomplete list
+    And I press "Move questions"
+    And I click on "Confirm" "button"
     # Confirm that selected questions are moved to selected category while unselected questions are not moved.
     Then I should see "Moved questions"
     And I should see "Question 1"
