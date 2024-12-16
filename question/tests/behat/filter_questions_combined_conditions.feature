@@ -76,8 +76,8 @@ Feature: The questions in the question bank can be filtered by combine various c
     And I should not see "question 1 name"
     And I should not see "question 2 name"
     And I click on "Create a new question" "button"
-    And I click on "True/False" "text"
-    And I click on "submitbutton" "button"
+    And I set the field "item_qtype_truefalse" to "1"
+    And I click on "Add" "button" in the "Choose a question type to add" "dialogue"
     And the following fields match these values:
       | Category | Test questions 3 |
     And I set the following fields to these values:
