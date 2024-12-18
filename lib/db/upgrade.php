@@ -1444,7 +1444,19 @@ function xmldb_main_upgrade($oldversion) {
         upgrade_main_savepoint(true, 2024100100.02);
     }
 
-    if ($oldversion < 2024100701.01) {
+    // Automatically generated Moodle v4.5.0 release upgrade line.
+    // Put any upgrade step following this.
+
+    if ($oldversion < 2024101400.00) {
+        // Delete settings that were removed from code.
+        $settings = ['backup_general_questionbank', 'backup_import_questionbank', 'backup_auto_questionbank'];
+        array_walk($settings, static fn($setting) => unset_config($setting, 'backup'));
+
+        // Main savepoint reached.
+        upgrade_main_savepoint(true, 2024101400.00);
+    }
+
+    if ($oldversion < 2024101500.01) {
         $smsgateways = $DB->get_records('sms_gateways');
         foreach ($smsgateways as $gateway) {
             $newconfig = json_decode($gateway->config);
@@ -1460,19 +1472,7 @@ function xmldb_main_upgrade($oldversion) {
         }
 
         // Main savepoint reached.
-        upgrade_main_savepoint(true, 2024100701.01);
-    }
-
-    // Automatically generated Moodle v4.5.0 release upgrade line.
-    // Put any upgrade step following this.
-
-    if ($oldversion < 2024101400.00) {
-        // Delete settings that were removed from code.
-        $settings = ['backup_general_questionbank', 'backup_import_questionbank', 'backup_auto_questionbank'];
-        array_walk($settings, static fn($setting) => unset_config($setting, 'backup'));
-
-        // Main savepoint reached.
-        upgrade_main_savepoint(true, 2024101400.00);
+        upgrade_main_savepoint(true, 2024101500.01);
     }
 
     return true;
