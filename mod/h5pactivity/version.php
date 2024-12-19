@@ -25,5 +25,5 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_h5pactivity';
-$plugin->version = 2024100700;
-$plugin->requires = 2024100100;
+$plugin->version = 2024102100;
+$plugin->requires = 2024101600;
