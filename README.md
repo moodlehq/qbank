@@ -8,6 +8,18 @@
 
 Moodle is designed to allow educators, administrators and learners to create personalised learning environments with a single robust, secure and integrated system.
 
+## Experimental release
+
+Please note that the code branch for Moodle 4.6 in this repository is a Short-Term Support release and should preferably not be used in production as it is intended for <b>testing purposes only</b>. This special release is intended to give a stable code for testing the restructure of the Moodle Question Banks to utilise a module (mod_qbank) enhancing the ability for question banks to be shared across a whole institution.
+
+The repository is Moodle 4.5.1 + <b>[MDL-71378][13]</b> with no other code improvements or enhancements over Moodle 4.5.
+
+As a Short-Term Support release, this release will only be supported for general core bugs, security-related issues and bugs related to <b>MDL-71378</b> until the Moodle 5.0 release (14th April 2025). Beyond Moodle 5.0 any security or other fixes will be assessed individually on an as needs basis only.
+
+General bugs and issues related to this version can be reported in Tracker and should be tagged against Moodle 4.5 and reproducible against that version. Issues related to <b>MDL-71378</b> should be reported in Tracker and the “affected version” should be listed as 5.0.
+
+If you would like to contribute to the project enquiries can be directed to luca.boesch@bfh.ch.
+
 ## Documentation
 
 - Read our [User documentation][3]
@@ -46,3 +58,4 @@ Moodle is provided freely as open source software, under version 3 of the GNU Ge
 [10]: https://moodle.com/partners
 [11]: https://moodle.com/cloud
 [12]: https://moodledev.io/general/license
+[13]: https://tracker.moodle.org/browse/MDL-71378
