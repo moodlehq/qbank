@@ -1104,7 +1104,7 @@ class edit_renderer extends \plugin_renderer_base {
 
         $editicon = $this->pix_icon('t/edit', $configuretitle, 'moodle', ['title' => '']);
         $qbankurlparams = [
-            'courseid' =>  $structure->get_courseid(),
+            'cmid' => $structure->get_source_bank($slotnumber)->cminfo->id,
             'filter' => json_encode($slot->filtercondition['filter']),
         ];
 
