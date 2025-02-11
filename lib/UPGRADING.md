@@ -1,5 +1,50 @@
 # core (subsystem) Upgrade notes
 
+## 4.6.1
+
+### Added
+
+- A new core\ip_utils::normalize_internet_address() method is created to sanitize an IP address, a range of IP addresses, a domain name or a wildcard domain matching pattern.
+
+  Moodle previously allowed entries such as 192.168. or .moodle.org for certain variables (eg: $CFG->proxybypass). Since MDL-74289, these formats are no longer allowed. This method converts this informations into an authorized format. For example, 192.168. becomes 192.168.0.0/16 and .moodle.org becomes *.moodle.org.
+
+  Also a new core\ip_utils::normalize_internet_address_list() method is created. Based on core\ip_utils::normalize_internet_address(), this method normalizes a string containing a series of Internet addresses.
+
+  For more information see [MDL-79121](https://tracker.moodle.org/browse/MDL-79121)
+
+### Changed
+
+- The `core_renderer::tag_list` function now has a new parameter named `displaylink`. When `displaylink` is set to `true`, the tag name will be displayed as a clickable hyperlink. Otherwise, it will be rendered as plain text.
+
+  For more information see [MDL-75075](https://tracker.moodle.org/browse/MDL-75075)
+- The following test classes have been moved into autoloadable locations:
+
+  | Old location | New classname |
+  | --- | --- |
+  | `\core\tests\route_testcase` | `\core\tests\router\route_testcase` |
+  | `\core\router\mocking_route_loader` | `\core\tests\router\mocking_route_loader` |
+
+  For more information see [MDL-83968](https://tracker.moodle.org/browse/MDL-83968)
+
+### Deprecated
+
+- question_make_default_categories()
+
+  No longer creates a default category in either CONTEXT_SYSTEM, CONTEXT_COURSE, or CONTEXT_COURSECAT.
+  Superceded by question_get_default_category which can optionally create one if it does not exist.
+
+  For more information see [MDL-71378](https://tracker.moodle.org/browse/MDL-71378)
+- question_delete_course()
+
+  No replacement. Course contexts no longer hold question categories.
+
+  For more information see [MDL-71378](https://tracker.moodle.org/browse/MDL-71378)
+- question_delete_course_category()
+
+  Course category contexts no longer hold question categories.
+
+  For more information see [MDL-71378](https://tracker.moodle.org/browse/MDL-71378)
+
 ## 4.5.1
 
 ### Added
