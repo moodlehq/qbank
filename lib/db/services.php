@@ -3284,6 +3284,12 @@ $functions = array(
         'type' => 'write',
         'ajax' => true,
     ],
+    'core_question_search_shared_banks' => [
+        'classname' => '\core_question\external\search_shared_banks',
+        'description' => 'Get a list of shared question banks filtered by a search term.',
+        'type' => 'read',
+        'ajax' => true,
+    ],
 );
 
 $services = array(
