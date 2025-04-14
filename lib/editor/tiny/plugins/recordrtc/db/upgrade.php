@@ -48,7 +48,7 @@ function xmldb_tiny_recordrtc_upgrade($oldversion) {
     // Automatically generated Moodle v4.5.0 release upgrade line.
     // Put any upgrade step following this.
 
-    if ($oldversion < 2024100701) {
+    if ($oldversion < 2024102101) {
         // The input bitrate to be converted.
         $currentbitrate = get_config('tiny_recordrtc', 'audiobitrate');
 
@@ -62,7 +62,7 @@ function xmldb_tiny_recordrtc_upgrade($oldversion) {
         // Update the bitrate setting with the nearest supported bitrate.
         set_config('audiobitrate', $nearestbitrate, 'tiny_recordrtc');
 
-        upgrade_plugin_savepoint(true, 2024100701, 'tiny', 'recordrtc');
+        upgrade_plugin_savepoint(true, 2024102101, 'tiny', 'recordrtc');
     }
 
     return true;

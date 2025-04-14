@@ -52,7 +52,7 @@ function xmldb_quizaccess_seb_upgrade($oldversion) {
     // Automatically generated Moodle v4.5.0 release upgrade line.
     // Put any upgrade step following this.
 
-    if ($oldversion < 2024100701) {
+    if ($oldversion < 2024102102) {
 
         // Define field allowcapturecamera to be added to quizaccess_seb_quizsettings.
         $table = new xmldb_table('quizaccess_seb_quizsettings');
@@ -72,7 +72,7 @@ function xmldb_quizaccess_seb_upgrade($oldversion) {
         }
 
         // Seb savepoint reached.
-        upgrade_plugin_savepoint(true, 2024100701, 'quizaccess', 'seb');
+        upgrade_plugin_savepoint(true, 2024102102, 'quizaccess', 'seb');
     }
 
     return true;
